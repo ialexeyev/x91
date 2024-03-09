@@ -1,0 +1,139 @@
+/* CMAP application general styles */
+
+body {
+  margin: 2vh 3vw 2vh 3vw;
+  color: #003a84;
+  font-family: Tahoma, sans-serif;
+  opacity: 0;
+  transition: 1s;
+}
+
+@font-face {
+  font-family: "HyundaiStd";
+  src: url("../../static/font/hyundai.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100;
+}
+
+/* Header styles */
+header {
+  width: 100%;
+  height: 5vh;
+  position: relative;
+}
+
+#appLogo {
+  width: 8.3%;
+  height: 100%;
+  float: left;
+}
+
+#appLogoImg {
+  height: 100%;
+}
+
+#appLogoText {
+  margin: 0;
+  padding-top: 0.2vw;
+  float: right;
+  font-size: 1.7vw;
+}
+
+#companyLogo {
+  width: 14%;
+  float: right;
+  margin-top: 0.3vw;
+}
+
+#companyLogoImg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Footer styles */
+footer {
+  text-align: center;
+  font-size: 1vw;
+}
+
+
+/* Sign in page styles */ 
+#mainWall {
+  width: 100%;
+  height: 90vh;
+  margin-top: 0.6vw;
+  position: relative;
+}
+#mainWallImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.SignInForms {
+  width: 34%;
+  height: 47%;
+  background: white;
+  position: absolute;
+  margin: 22vh 27vw;
+  padding: 0vh 3vw 0vh 3vw;
+}
+
+#idFormBlock {
+  transform: rotateX(90deg);
+  transition: 1.5s;
+}
+
+.SignInHeaders {
+  text-align: center;
+  font-size: 1.4vw;
+  margin-top: 5%;
+}
+
+.InputForms {
+  width: 100%;
+  height: 65%;
+  margin-top: 2.5vw;
+}
+
+.UserInput {
+  margin: 0;
+  width: 100%;
+  border: none;
+  height: 4vh;
+  font-size: 1.1vw;
+  border-bottom: 0.1vw solid #003a84;
+  outline: none;
+  color: #003a84;
+}
+
+.UserHelp {
+  font-size: 0.9vw;
+  margin-top: 2vw;
+}
+
+#createLink {
+  text-decoration: none;
+  color: #2a99d0;
+}
+
+.LoginButtons {
+  margin-top: 1.5vw;
+  width: 100%;
+  height: 7vh;
+  border: none;
+  color: white;
+  background: rgb(36,115,184);
+  font-size: 1vw;
+  font-family: Tahoma, sans-serif;
+}
+
+.LoginButtons:hover, .LoginButtons:focus {
+  cursor: pointer;
+  background: linear-gradient(to bottom, #245fa3, #19437f);
+}
+
+.LoginButtons:active {
+  cursor: pointer;
+  background: linear-gradient(to bottom, #19437f, #cb1a1a)
+}

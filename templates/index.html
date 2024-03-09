@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang = "en-US">
+  <head>
+    <meta charset = "utf-8">
+    <title>CMAP: main page</title>
+    <link rel = "stylesheet" href = "../static/stylesheet/main.css"></link>
+    <link rel = "icon" href = "../static/ico/logo.ico"></link>
+  </head>
+  <body>
+    <header>
+      <div id = "appLogo">
+        <img src = "../static/img/logo.png" alt = "CMAP" id = "appLogoImg">
+        <h1 id = "appLogoText">CMAP</h1>
+      </div>  
+      <div id = "companyLogo">
+        <img src = "../static/img/hyundailogo.png" alt = "Hyundai" id = "companyLogoImg">
+      </div>
+    </header>
+    <main>
+      <div id = "mainWall">
+        <div class = "SignInForms" id = "idFormBlock">
+          <h2 class = "SignInHeaders" id = "idHeader">Sign in</h2>
+          <div class = "InputForms" id = "idForm">
+            <form action = "" method = "post">
+                <input type = "text" class = "UserInput" id = "fName" name = "fName" placeholder = "ID" required>
+                <h3 class = "UserHelp" id = "createAccount">No account? <a id = "createLink" href = "">Create one!</a></h3>
+                <button type = "button" class = "LoginButtons" id = "idButton" value = "Next">Next</button>
+            </form>
+          </div>
+        </div>
+        <img src = "../static/img/wall.jpg" alt = "Wall" id = "mainWallImg">
+      </div>
+    </main>
+    <footer>
+      <h5 id = "footerText">©2024 Hyundai Trans Kazakhstan| Design and technology management | All Rights Reserved</h5>
+    </footer>
+    <script src = "../static/js/login.js"></script>
+  </body>
+</html>
