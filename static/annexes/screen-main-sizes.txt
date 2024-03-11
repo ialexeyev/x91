@@ -1,0 +1,7 @@
+	Screen main sizes:
+1. min-width: 1824px - DESKTOPS 
+2. min-width: 1224px - LAPTOPS
+3. min-width: 1024px - NET LAPTOPS
+4. min-width: 768px -  PADS
+5. min-width: 480px -  SMAPTPHONES
+6. min-width: 360px -  MOBILE
