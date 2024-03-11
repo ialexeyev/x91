@@ -1,11 +1,20 @@
-from flask import Flask, render_template
+from flask import Flask, jsonify, render_template
+from db import loadHeaders
 
 app = Flask(__name__, '/static')
 
 
 @app.route("/")
 def launch():
-  return render_template('index.html')
+  headers = loadHeaders()
+  return render_template('index.html', headers=headers)
+
+
+@app.route("/api/headers")
+def local_headers():
+  headers = loadHeaders()
+  return jsonify(headers)
+
 
 
 if (__name__ == '__main__'):

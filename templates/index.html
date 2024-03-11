@@ -10,7 +10,7 @@
     <header>
       <div id = "appLogo">
         <img src = "../static/img/logo.png" alt = "CMAP" id = "appLogoImg">
-        <h1 id = "appLogoText">CMAP</h1>
+        <h1 id = "appLogoText">{% print(headers[0]['title']) %}</h1>
       </div>  
       <div id = "companyLogo">
         <img src = "../static/img/hyundailogo.png" alt = "Hyundai" id = "companyLogoImg">
@@ -19,7 +19,7 @@
     <main>
       <div id = "mainWall">
         <div class = "SignInForms" id = "idFormBlock">
-          <h2 class = "SignInHeaders" id = "idHeader">Sign in</h2>
+          <h2 class = "SignInHeaders" id = "idHeader">{% print(headers[1]['title']) %}</h2>
           <div class = "InputForms" id = "idForm">
             <form action = "" method = "post">
                 <input type = "text" class = "UserInput" id = "fName" name = "fName" placeholder = "ID" required>
