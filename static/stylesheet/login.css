@@ -37,6 +37,12 @@
   border: none;
   outline: none;
   color: #003a84;
+  border-radius: 0vw;
+}
+.UserInput:focus {
+  border: none;
+  outline: none;
+  border-radius: 0vw;
 }
 
 #createLink {
