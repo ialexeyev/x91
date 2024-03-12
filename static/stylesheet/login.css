@@ -73,9 +73,9 @@
 /* DESKTOPS (1824px) */
 @media screen and (max-width: 1824px) {
   .SignInForms {
-    width: 33vw;
+    width: 31vw;
     height: 42vh;
-    margin: 25vh 27vw;
+    margin: 25vh 28vw;
     padding: 0vh 3vw 0vh 3vw;
   }
   .SignInHeaders {
@@ -105,9 +105,9 @@
 /* LAPTOPS (1224px) */
 @media screen and (max-width: 1224px) {
   .SignInForms {
-    width: 38vw;
+    width: 36vw;
     height: 46vh;
-    margin: 22vh 22.5vw;
+    margin: 22vh 21.5vw;
     padding: 0vh 4vw 0vh 4vw;
   }
   .SignInHeaders {
