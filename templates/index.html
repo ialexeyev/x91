@@ -24,9 +24,10 @@
           <h2 class = "SignInHeaders" id = "idHeader">{% print(headers[1]['title']) %}</h2>
           <div class = "InputForms" id = "idForm">
             <form action = "" method = "post">
-                <input type = "text" class = "UserInput" id = "fName" name = "fName" placeholder = "ID" required>
+                <input type = "text" class = "UserInput" id = "fName" name = "fName" placeholder = "ID" autocomplete="off" onfocus = "clearErrorMsg()" required>
                 <h3 class = "UserHelp" id = "createAccount">No account? <a id = "createLink" href = "">Create one!</a></h3>
-                <button type = "button" class = "LoginButtons" id = "idButton" value = "Next">Next</button>
+                <h3 class = "ErrorMessages" id = "idErrMess">ERROR</h3>
+                <button type = "button" class = "LoginButtons" id = "idButton" value = "Next" onclick = "checkId()">Next</button>
             </form>
           </div>
         </div>
@@ -36,6 +37,8 @@
     <footer>
       <h5 id = "footerText">{% print(headers[2]['title']) %}</h5>
     </footer>
+    <script src = "../static/lib/ajx1.js"></script>
+    <script src = "../static/js/const.js"></script>
     <script src = "../static/js/login.js"></script>
   </body>
 </html>

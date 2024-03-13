@@ -63,6 +63,13 @@
   background: linear-gradient(to bottom, #19437f, #cb1a1a)
 }
 
+.ErrorMessages {
+  margin: 0;
+  text-align: center;
+  color: red;
+  visibility: hidden; 
+}
+
 
 /* Dimensions styles */
 /* DESKTOPS (1824px) */
@@ -91,9 +98,12 @@
     margin-top: 2vw;
   }
   .LoginButtons {
-    margin-top: 3.5vh;
+    margin-top: 2vh;
     height: 7vh;
     font-size: 1vw;
+  }
+  .ErrorMessages {
+    font-size: 1.2vw;
   }
 }
 
@@ -123,9 +133,12 @@
     margin-top: 2.2vw;
   }
   .LoginButtons {
-    margin-top: 3.8vh;
+    margin-top: 2.4vh;
     height: 8.2vh;
     font-size: 1.2vw;
+  }
+  .ErrorMessages {
+    font-size: 1.4vw;
   }
 }
 
@@ -155,9 +168,12 @@
     margin-top: 2.5vw;
   }
   .LoginButtons {
-    margin-top: 4.2vh;
+    margin-top: 2vh;
     height: 8.3vh;
     font-size: 1.5vw;
+  }
+  .ErrorMessages {
+    font-size: 1.7vw;
   }
 }
 
@@ -187,9 +203,12 @@
     margin-top: 3vw;
   }
   .LoginButtons {
-    margin-top: 5vh;
+    margin-top: 3vh;
     height: 9.2vh;
     font-size: 2.3vw;
+  }
+  .ErrorMessages {
+    font-size: 2.5vw;
   }
 }
 
@@ -219,9 +238,12 @@
     margin-top: 5vw;
   }
   .LoginButtons {
-    margin-top: 4.5vh;
+    margin-top: 2vh;
     height: 9.2vh;
     font-size: 3.5vw;
+  }
+  .ErrorMessages {
+    font-size: 3.7vw;
   }
 }
 
@@ -251,8 +273,8 @@
     margin-top: 5.4vw;
   }
   .LoginButtons {
-    margin-top: 4.9vh;
+    margin-top: 2.5vh;
     height: 9.4vh;
-    font-size: 3.9vw;
+    font-size: 4.1vw;
   }
 }

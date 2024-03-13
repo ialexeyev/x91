@@ -1,4 +1,5 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, render_template, request
+from sqlalchemy import False_, false
 from db import loadHeaders
 
 app = Flask(__name__, '/static')
@@ -10,10 +11,20 @@ def launch():
   return render_template('index.html', headers=headers)
 
 
-@app.route("/api/headers")
-def local_headers():
-  headers = loadHeaders()
-  return jsonify(headers)
+@app.route("/loginidprocess", methods=['POST'])
+def processId():
+  userId = request.form['userId']
+  # DB CONNECTION
+  from db import loadUsers
+  users = loadUsers()
+  indicator = False
+  for user in users:
+    if user['username'] == userId:
+      indicator = True
+  if (indicator == True):
+    return 'OK'
+  else:
+    return 'NOK'
 
 
 if (__name__ == '__main__'):

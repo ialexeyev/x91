@@ -17,3 +17,12 @@ def loadHeaders():
     for row in resultHeaders.all():
       resultHeadersDict.append(row._asdict())
     return resultHeadersDict
+
+
+def loadUsers():
+  with engine.connect() as conn:
+    pre_users = conn.execute(text("select username from users"))
+    users = []
+    for row in pre_users.all():
+      users.append(row._asdict())
+    return users
