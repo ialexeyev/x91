@@ -13,9 +13,9 @@ def launch():
 
 @app.route("/loginidprocess", methods=['POST'])
 def processId():
-  userId = request.form['userId']
   # DB CONNECTION
   from db import loadUsers
+  userId = request.form['userId']
   users = loadUsers()
   indicator = False
   for user in users:
@@ -27,7 +27,22 @@ def processId():
     return 'NOK'
 
 
+@app.route("/loginpassprocess", methods=['POST'])
+def processPass():
+  from db import loadUsersPass
+  userAuth = request.form['userauth']
+  userPass = request.form['userpass']
+  users = loadUsersPass()
+  indicator = False
+  for user in users:
+    if (user['username'] == userAuth and user['pass'] == userPass):
+      indicator = True
+  if(indicator == True):
+    return 'OK'
+  else:
+    return 'NOK'
+    
+
+
 if (__name__ == '__main__'):
   app.run(host='0.0.0.0', debug=True)
-
-# Last assembly: 3h20min

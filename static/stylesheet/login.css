@@ -22,6 +22,10 @@
   transform: rotateX(90deg);
   transition: 1.5s;
 }
+#pwFormBlock {
+  transform: rotateY(90deg);
+  transition: 1.5s;
+}
 
 .SignInHeaders {
   text-align: center;
@@ -40,7 +44,7 @@
   border-radius: 0vw;
 }
 
-#createLink {
+.LogFormLinks {
   text-decoration: none;
   color: #2a99d0;
 }
@@ -56,6 +60,7 @@
 .LoginButtons:hover, .LoginButtons:focus {
   cursor: pointer;
   background: linear-gradient(to bottom, #245fa3, #19437f);
+  outline: none;
 }
 
 .LoginButtons:active {
@@ -68,6 +73,14 @@
   text-align: center;
   color: red;
   visibility: hidden; 
+}
+
+#passHelp {
+  position: absolute;
+  font-style: italic;
+}
+#passHelp:hover {
+  cursor: pointer;
 }
 
 
@@ -93,7 +106,7 @@
     font-size: 1.1vw;
     border-bottom: 0.1vw solid #003a84;
   }
-  .UserHelp {
+  .UserHelp, .UserEntered {
     font-size: 0.9vw;
     margin-top: 2vw;
   }
@@ -104,6 +117,9 @@
   }
   .ErrorMessages {
     font-size: 1.2vw;
+  }
+  #passHelp {
+    font-size: 0.8vw;
   }
 }
 
@@ -128,7 +144,7 @@
     font-size: 1.3vw;
     border-bottom: 0.1vw solid #003a84;
   }
-  .UserHelp {
+  .UserHelp, .UserEntered {
     font-size: 1.2vw;
     margin-top: 2.2vw;
   }
@@ -139,6 +155,9 @@
   }
   .ErrorMessages {
     font-size: 1.4vw;
+  }
+  #passHelp {
+    font-size: 0.9vw;
   }
 }
 
@@ -163,7 +182,7 @@
     font-size: 1.6vw;
     border-bottom: 0.1vw solid #003a84;
   }
-  .UserHelp {
+  .UserHelp, .UserEntered {
     font-size: 1.5vw;
     margin-top: 2.5vw;
   }
@@ -174,6 +193,9 @@
   }
   .ErrorMessages {
     font-size: 1.7vw;
+  }
+  #passHelp {
+    font-size: 1.2vw;
   }
 }
 
@@ -198,7 +220,7 @@
     font-size: 2.5vw;
     border-bottom: 0.2vw solid #003a84;
   }
-  .UserHelp {
+  .UserHelp, .UserEntered {
     font-size: 2.3vw;
     margin-top: 3vw;
   }
@@ -209,6 +231,9 @@
   }
   .ErrorMessages {
     font-size: 2.5vw;
+  }
+  #passHelp {
+    font-size: 1.7vw;
   }
 }
 
@@ -233,7 +258,7 @@
     font-size: 3.6vw;
     border-bottom: 0.3vw solid #003a84;
   }
-  .UserHelp {
+  .UserHelp, .UserEntered {
     font-size: 3.5vw;
     margin-top: 5vw;
   }
@@ -244,6 +269,9 @@
   }
   .ErrorMessages {
     font-size: 3.7vw;
+  }
+  #passHelp {
+    font-size: 2.5vw;
   }
 }
 
@@ -268,7 +296,7 @@
     font-size: 4vw;
     border-bottom: 0.3vw solid #003a84;
   }
-  .UserHelp {
+  .UserHelp, .UserEntered {
     font-size: 3.9vw;
     margin-top: 5.4vw;
   }
@@ -276,5 +304,8 @@
     margin-top: 2.5vh;
     height: 9.4vh;
     font-size: 4.1vw;
+  }
+  #passHelp {
+    font-size: 3.1vw;
   }
 }

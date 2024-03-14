@@ -19,6 +19,7 @@ def loadHeaders():
     return resultHeadersDict
 
 
+# For checking username
 def loadUsers():
   with engine.connect() as conn:
     pre_users = conn.execute(text("select username from users"))
@@ -26,3 +27,13 @@ def loadUsers():
     for row in pre_users.all():
       users.append(row._asdict())
     return users
+
+
+# For checcking user password
+def loadUsersPass():
+  with engine.connect() as conn:
+    pre_users = conn.execute(text("select username, pass from users"))
+    userdata = []
+    for row in pre_users.all():
+      userdata.append(row._asdict())
+    return userdata
