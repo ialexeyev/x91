@@ -25,6 +25,9 @@ header {
   height: 100%;
   float: left;
 }
+#appLogo:hover {
+  cursor: pointer;
+}
 
 #appLogoImg {
   height: 100%;
@@ -38,10 +41,26 @@ header {
 #companyLogo {
   float: right;
 }
+#companyLogo:hover {
+  cursor: pointer;
+}
 
 #companyLogoImg {
   width: 100%;
   height: 100%;
+}
+
+.MainWall {
+  width: 100%;
+  height: 90vh;
+  position: relative;
+  margin-top: 0.6vw;
+  height: 91vh;
+}
+.MainWallImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 footer {

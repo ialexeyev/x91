@@ -5,27 +5,28 @@
     <meta name = "viewport" content = "width=device-width, initial-scale=1">
     <title>{% print(headers[3]['title']) %}</title>
     <link rel = "stylesheet" href = "../static/stylesheet/main.css"></link>
+    <link rel = "stylesheet" href = "../static/stylesheet/input.css"></link>
     <link rel = "stylesheet" href = "../static/stylesheet/login.css"></link>
     <link rel = "icon" href = "../static/ico/logo.ico"></link>
   </head>
   <body>
     <header>
-      <div id = "appLogo">
+      <div id = "appLogo" onclick = "window.location.href = '/'">
         <img src = "../static/img/logo.png" alt = "CMAP" id = "appLogoImg">
         <h1 id = "appLogoText">{% print(headers[0]['title']) %}</h1>
       </div>  
       <div id = "companyLogo">
-        <img src = "../static/img/hyundailogo.png" alt = "Hyundai" id = "companyLogoImg">
+        <img src = "../static/img/hyundailogo.png" alt = "Hyundai" id = "companyLogoImg" onclick = "window.open('https://www.hyundai.com/kz/ru', '_blank');">
       </div>
     </header>
     <main>
-      <div id = "mainWall">
+      <div class ="MainWall" id = "mainWallLogin">
         <div class = "SignInForms" id = "idFormBlock">
           <h2 class = "SignInHeaders" id = "idHeader">{% print(headers[1]['title']) %}</h2>
           <div class = "InputForms" id = "idForm">
             <form action = "" method = "post">
                 <input type = "text" class = "UserInput" id = "fName" name = "fName" placeholder = "ID" autocomplete="off" onfocus = "clearErrorMsg(document.getElementById('idErrMess'))" required>
-                <h3 class = "UserHelp" id = "createAccount">No account? <a class = "LogFormLinks" id = "createLink" href = "">Create one!</a></h3>
+                <h3 class = "UserHelp" id = "createAccount">No account? <a rel = "signup" href = "/signup" class = "LogFormLinks" id = "createAccountLink">Create one!</a></h3>
                 <h3 class = "ErrorMessages" id = "idErrMess">ERROR</h3>
                 <button type = "button" class = "LoginButtons" id = "idButton" value = "Next" onclick = "checkId()">Next</button>
             </form>
@@ -38,14 +39,14 @@
             <div class = "InputForms" id = "passForm">
               <form action = "" method = "post">
                   <input type = "password" class = "UserInput" id = "fPass" name = "fPass" placeholder = "password" autocomplete = "new-password" onfocus = "clearErrorMsg(document.getElementById('passErrMess'))" required>
-                  <h3 class = "UserEntered" id = "enteredUsername">Forgot password? <a class = "LogFormLinks" id = "forgotPass" href = "">Restore it!</a></h3>
+                  <h3 class = "UserEntered" id = "enteredUsername">Forgot password? <span class = "LogFormLinks" id = "forgotPass" onclick = "">Restore it!</span></h3>
                   <h3 class = "ErrorMessages" id = "passErrMess">ERROR</h3>
                   <button type = "button" class = "LoginButtons" id = "passButton" value = "Sign in" onclick = "checkPass()">Sign in</button>
               </form>
             </div>
         </div>
         <!-- finish of password form block -->
-        <img src = "../static/img/wall.jpg" alt = "Wall" id = "mainWallImg">
+        <img src = "../static/img/wall.jpg" alt = "Wall" class = "MainWallImg" id = "mainWallImg">
       </div>
     </main>
     <footer>

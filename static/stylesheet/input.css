@@ -1,0 +1,59 @@
+/* X91: input form styles */
+
+.SignInHeaders {
+  text-align: center;
+}
+
+.InputForms {
+  width: 100%;
+}
+
+.UserInput {
+  margin: 0;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #003a84;
+  border-radius: 0vw;
+}
+
+.LogFormLinks {
+  text-decoration: none;
+  color: #2a99d0;
+}
+.LogFormLinks:active {
+  color: #003a84;
+}
+
+.LoginButtons {
+  width: 100%;
+  border: none;
+  color: white;
+  background: rgb(36,115,184);
+  font-family: Tahoma, sans-serif;
+}
+
+.LoginButtons:hover, .LoginButtons:focus {
+  cursor: pointer;
+  background: linear-gradient(to bottom, #245fa3, #19437f);
+  outline: none;
+}
+
+.LoginButtons:active {
+  cursor: pointer;
+  background: linear-gradient(to bottom, #19437f, #cb1a1a)
+}
+
+.ErrorMessages {
+  margin: 0;
+  text-align: center;
+  color: red;
+  visibility: hidden; 
+}
+
+.SignInForms {
+  background: white;
+  position: absolute;
+  transform: rotateX(90deg);
+  transition: 1.5s;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang = "en-US">
+  <head>
+    <meta charset = "utf-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+    <title>CMAP: sign in</title>
+    <link rel = "stylesheet" href = "../static/stylesheet/main.css"></link>
+    <link rel = "stylesheet" href = "../static/stylesheet/input.css"></link>
+    <link rel = "stylesheet" href = "../static/stylesheet/signup.css"></link>
+    <link rel = "icon" href = "../static/ico/logo.ico"></link>
+  </head>
+  <body>
+    <header>
+      <div id = "appLogo" onclick = "window.location.href = '/'">
+        <img src = "../static/img/logo.png" alt = "CMAP" id = "appLogoImg">
+        <h1 id = "appLogoText">{% print(headers[0]['title']) %}</h1>
+      </div>  
+      <div id = "companyLogo">
+        <img src = "../static/img/hyundailogo.png" alt = "Hyundai" id = "companyLogoImg" onclick = "window.open('https://www.hyundai.com/kz/ru', '_blank');">
+      </div>
+    </header>
+    <main>
+      <div class = "MainWall">
+        <div class = "SignInForms" id = "registrationFormBlock">
+          <h2 class = "SignInHeaders" id = "registrationHeader">Sign up</h2>
+          <div class = "InputForms" id = "idForm">
+            <form method = "post">
+              <input type = "text" class = "UserInput" id = "signUpFirstName" name = "signUpFirstName" placeholder = "First name" autocomplete = "new-user" onfocus = "clearErrorMsg(document.getElementById('registrationErrMess'), this)" required>
+              <input type = "text" class = "UserInput" id = "signUpLastName" name = "signUpLastName" placeholder = "Last name" autocomplete = "new-user" onfocus = "clearErrorMsg(document.getElementById('registrationErrMess'), this)" required>
+              <input type = "text" class = "UserInput" id = "signUpUserName" name = "signUpUserName" placeholder = "ID" autocomplete = "new-user" onfocus = "clearErrorMsg(document.getElementById('registrationErrMess'), this)" required>
+              <input type = "password" class = "UserInput" id = "signUpPass" name = "signUpPass" placeholder = "Password" autocomplete = "off" onfocus = "clearErrorMsg(document.getElementById('registrationErrMess'), this)" required>
+              <select class = "SelectFields" id = "selectJobTitle" name = "selectJobTitle" placeholder = "Select a job titile" onfocus = "clearErrorMsg(document.getElementById('registrationErrMess'), this)">
+                <option value = "jobTitle" disabled selected>Job title</option>
+                {% for i in jobtitles: %}
+                   <option>{% print(i['jobtitle']) %}</option> 
+                {% endfor %}
+              </select>
+              <h3 class = "ErrorMessages" id = "registrationErrMess">ERROR</h3>
+              <button type = "button" class = "LoginButtons" id = "registrationButton" value = "Sign up" onclick = "checkRegistration(document.getElementById('registrationErrMess'))">Sign up</button>
+            </form>
+          </div>
+        </div>
+        <img src = "../static/img/wallSignUp.jpeg" alt = "Wall" class = "MainWallImg" id = "mainWallImg">
+      </div>
+    </main>
+    <footer>
+      <h5 id = "footerText">{% print(headers[2]['title']) %}</h5>
+    </footer>
+    <script src = "../static/js/const.js"></script>
+    <script src = "../static/js/ajx1.js"></script>
+    <script src = "../static/js/signup.js"></script>
+  </body>
+</html>

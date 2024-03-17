@@ -160,3 +160,5 @@ function synchro(err) {
 function clearErrorMsg(errMsg) {
   errMsg.style.visibility = "hidden";
 }
+
+
