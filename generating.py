@@ -5,6 +5,3 @@ import random
 def generateCode():
   gcode = random.randint(0, 99999)
   return gcode
-
-
-print(generateCode())
