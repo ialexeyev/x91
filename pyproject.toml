@@ -10,6 +10,7 @@ packages = [{include = "repl_nix_x91"}]
 python = "^3.10"
 flask = "^3.0.2"
 sqlalchemy = "^2.0.28"
+flask-mail = "^0.9.1"
 
 
 [build-system]

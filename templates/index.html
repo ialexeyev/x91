@@ -39,7 +39,7 @@
             <div class = "InputForms" id = "passForm">
               <form action = "" method = "post">
                   <input type = "password" class = "UserInput" id = "fPass" name = "fPass" placeholder = "password" autocomplete = "new-password" onfocus = "clearErrorMsg(document.getElementById('passErrMess'))" required>
-                  <h3 class = "UserEntered" id = "enteredUsername">Forgot password? <span class = "LogFormLinks" id = "forgotPass" onclick = "">Restore it!</span></h3>
+                  <h3 class = "UserHelp" id = "enteredUsername">Forgot password? <a rel = "forgotPassword" href = "/forgotpass" class = "LogFormLinks" id = "forgotPassLink"> Restore it!</a></h3>
                   <h3 class = "ErrorMessages" id = "passErrMess">ERROR</h3>
                   <button type = "button" class = "LoginButtons" id = "passButton" value = "Sign in" onclick = "checkPass()">Sign in</button>
               </form>

@@ -7,10 +7,12 @@ window.onload = () => {
 
 //1. Check user input
 function checkRegistration(errMsg) {
-  const userInput = [document.getElementById('signUpFirstName'),       
+  const userInput = [document.getElementById('signUpFirstName'),    
                      document.getElementById('signUpLastName'), 
                      document.getElementById('signUpUserName'), 
-                     document.getElementById('signUpPass')];
+                     document.getElementById('signUpPass'),
+                     document.getElementById('signUpPassConfirm'),
+                     document.getElementById('signUpEmail')];
   let userSelect = document.getElementById('selectJobTitle');
   let regBlock = document.getElementById('registrationFormBlock');
   if(checkEmptyInput(userInput, errMsg, userSelect)) {
@@ -39,8 +41,13 @@ function checkEmptyInput(allFields, error, selectField) {
         allFields[i].style.background = "#fbcbcb";
         return false;
       }
-      else if(allFields[i].id == "signUpPass") {
+      else if((allFields[i].id == "signUpPass") || (allFields[i].id == "signUpPassConfirm")) {
         showErrorMsg(error, ERR_MSG_TXT_PASS_EMPTY);
+        allFields[i].style.background = "#fbcbcb";
+        return false;
+      }
+      else if(allFields[i].id == "signUpEmail") {
+        showErrorMsg(error, ERR_MSG_TXT_EMAIL_EMPTY);
         allFields[i].style.background = "#fbcbcb";
         return false;
       }
@@ -57,7 +64,7 @@ function checkEmptyInput(allFields, error, selectField) {
   for(let i = 0; i < allFields.length; i++) {   
     if(allFields[i].value.length > 20) {
       //for password 
-      if(i == 3) {
+      if((i == 3) || (i == 4)) {
         showErrorMsg(error, ERR_MSG_PASS_LENGTH);
         allFields[i].style.background = "#fbcbcb";
         return false;
@@ -74,7 +81,7 @@ function checkEmptyInput(allFields, error, selectField) {
   for(let i = 0; i < allFields.length; i++) {   
     if(((/^[A-Za-z0-9.]+$/).test(allFields[i].value)) == false) {
       // skip password check
-      if(allFields[i].id == "signUpPass") {
+      if((i == 3) || (i == 4) || (i ==5)) {
         continue;
       }
       //for id
@@ -96,6 +103,20 @@ function checkEmptyInput(allFields, error, selectField) {
       }
     }
   }
+
+  //check password matches
+  if(allFields[3].value != allFields[4].value) {
+    showErrorMsg(error, ERR_MSG_TXT_MATCH_PASS);
+    allFields[4].style.background = "#fbcbcb";
+    return false; 
+  }
+
+  //check email (HTK company)
+  if(!(allFields[5].value.includes("@hyundai.kz"))) {
+    showErrorMsg(error, ERR_MSG_TXT_WORK_EMAIL);
+    allFields[5].style.background = "#fbcbcb";
+    return false;
+  }
   return true;
 }
 
@@ -108,6 +129,7 @@ function transferData(dataInput, dataSelect, error, currentBlock) {
             userLname: dataInput[1].value,
             userIdent: dataInput[2].value,
             userPass: dataInput[3].value,
+            userMail: dataInput[5].value,
             userSelect: dataSelect.value},
     type : 'POST',
     url : '/userregistration'
@@ -118,7 +140,7 @@ function transferData(dataInput, dataSelect, error, currentBlock) {
         error.textContent = SUCCESS_MSG_MAIN;   
         currentBlock.style.transform = "rotateY(90deg)";
         setTimeout(() => {
-          
+document.getElementById("returnFormBlock").style.transform = "rotateY(0deg)";
         }, "1500")
       }
       else if(data == 'NOK'){
@@ -152,4 +174,12 @@ function synchro(err) {
   err.style.color = "orange";
   err.textContent = SYNCHRO_MAIN;
   err.style.visibility = "visible";
+}
+
+//5. Return for login page after registration
+function returnToLogin() {
+   document.getElementById("returnFormBlock").style.transform = "rotateX(90deg)";
+  setTimeout(() => {
+    window.location.href = '/';
+    }, "1500")
 }

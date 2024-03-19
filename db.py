@@ -50,12 +50,32 @@ def displayJobItems():
 
 
 # SIGN UP PAGE: ADDING USER PROCESS
-def addingNewUser(fname, lname, id, passw, job):
-  allusers = table('users', column('username'), column('passw'), column('firstname'), column('lastname'), column('title'), column('access'), column('verified'))
-  insertUser = insert(allusers).values(username=id, passw=passw, firstname=fname, lastname=lname, title=job, access='user', verified='0')
+def addingNewUser(fname, lname, id, passw, mail, job):
+  allusers = table('users', column('username'), column('passw'),
+                   column('firstname'), column('lastname'), column('email'),
+                   column('title'), column('access'), column('verified'))
+  insertUser = insert(allusers).values(username=id,
+                                       passw=passw,
+                                       firstname=fname,
+                                       lastname=lname,
+                                       email=mail,
+                                       title=job,
+                                       access='user',
+                                       verified='0')
   with engine.connect() as conn:
     addUser = conn.execute(insertUser)
     conn.commit()
-    if(addUser):
-     return True
-    
+    if (addUser):
+      return True
+    else:
+      return False
+
+
+# FORGOT PASSOWRD PAGE: EMAIL VERIFICATION
+def askEmail():
+  with engine.connect() as conn:
+    preEmail = conn.execute(text("select email, verified from users"))
+    email = []
+    for row in preEmail.all():
+      email.append(row._asdict())
+    return email

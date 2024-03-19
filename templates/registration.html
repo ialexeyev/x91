@@ -3,7 +3,7 @@
   <head>
     <meta charset = "utf-8">
     <meta name = "viewport" content = "width=device-width, initial-scale=1">
-    <title>CMAP: sign in</title>
+    <title>CMAP: sign up</title>
     <link rel = "stylesheet" href = "../static/stylesheet/main.css"></link>
     <link rel = "stylesheet" href = "../static/stylesheet/input.css"></link>
     <link rel = "stylesheet" href = "../static/stylesheet/signup.css"></link>
@@ -29,6 +29,8 @@
               <input type = "text" class = "UserInput" id = "signUpLastName" name = "signUpLastName" placeholder = "Last name" autocomplete = "new-user" onfocus = "clearErrorMsg(document.getElementById('registrationErrMess'), this)" required>
               <input type = "text" class = "UserInput" id = "signUpUserName" name = "signUpUserName" placeholder = "ID" autocomplete = "new-user" onfocus = "clearErrorMsg(document.getElementById('registrationErrMess'), this)" required>
               <input type = "password" class = "UserInput" id = "signUpPass" name = "signUpPass" placeholder = "Password" autocomplete = "off" onfocus = "clearErrorMsg(document.getElementById('registrationErrMess'), this)" required>
+              <input type = "password" class = "UserInput" id = "signUpPassConfirm" name = "signUpPassConfirm" placeholder = "Confirm password" autocomplete = "off" onfocus = "clearErrorMsg(document.getElementById('registrationErrMess'), this)" required>
+              <input type = "email" class = "UserInput" id = "signUpEmail" name = "signUpEmail" placeholder = "Email" autocomplete = "new-user" onfocus = "clearErrorMsg(document.getElementById('registrationErrMess'), this)" required>
               <select class = "SelectFields" id = "selectJobTitle" name = "selectJobTitle" placeholder = "Select a job titile" onfocus = "clearErrorMsg(document.getElementById('registrationErrMess'), this)">
                 <option value = "jobTitle" disabled selected>Job title</option>
                 {% for i in jobtitles: %}
@@ -39,6 +41,11 @@
               <button type = "button" class = "LoginButtons" id = "registrationButton" value = "Sign up" onclick = "checkRegistration(document.getElementById('registrationErrMess'))">Sign up</button>
             </form>
           </div>
+        </div>
+        <!-- Return form block -->
+        <div class = "SignInForms" id = "returnFormBlock">
+          <h2 class = "SignInHeaders" id = "returnHeader">Your request will be verified by administrator</h2>
+          <button type = "button" class = "LoginButtons" id = "returnButton" value = "Return" onclick = "returnToLogin()">Return</button>
         </div>
         <img src = "../static/img/wallSignUp.jpeg" alt = "Wall" class = "MainWallImg" id = "mainWallImg">
       </div>

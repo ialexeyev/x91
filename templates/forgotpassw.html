@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang = "en-US"
+  <head>
+    <meta charset = "utf-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1">
+    <title>CMAP: forgot password?</title>
+    <link rel = "stylesheet" href = "../static/stylesheet/main.css"></link>
+    <link rel = "stylesheet" href = "../static/stylesheet/input.css"></link>
+    <link rel = "stylesheet" href = "../static/stylesheet/forgotpass.css"></link>
+    <link rel = "icon" href = "../static/ico/logo.ico"></link>
+  </head>
+  <body>
+    <header>
+      <div id = "appLogo" onclick = "window.location.href = '/'">
+        <img src = "../static/img/logo.png" alt = "CMAP" id = "appLogoImg">
+        <h1 id = "appLogoText">{% print(headers[0]['title']) %}</h1>
+      </div>  
+      <div id = "companyLogo">
+        <img src = "../static/img/hyundailogo.png" alt = "Hyundai" id = "companyLogoImg" onclick = "window.open('https://www.hyundai.com/kz/ru', '_blank');">
+      </div>
+    </header>
+    <main>
+      <div class = "MainWall">
+        <div class = "SignInForms" id = "forgotPassBlock">
+          <h2 class = "SignInHeaders" id = "forgotPassHeader">We need to verify your identity</h2>
+          <div class = "InputForms" id = "passForm">
+            <form method = "post">
+                <input type = "email" class = "UserInput" id = "fMail" name = "fMail" placeholder = "Enter your e-mail" autocomplete = "off" onfocus = "clearErrorMsg(document.getElementById('mailErrMess'))" required>
+                <h3 class = "UserHelp" id = "donthasMail"><span id = "forgotPassButton">I don't have work e-mail!</span></h3>
+                <h3 class = "ErrorMessages" id = "mailErrMess">ERROR</h3>
+                <button type = "button" class = "LoginButtons" id = "mailButton" value = "Get code" onclick = "checkMail()">Get code</button>
+            </form>
+          </div>
+        </div>
+        <div class = "SignInForms" id = "verifyEmailBlock">
+          <h2 class = "SignInHeaders" id = "verifyEmailHeader">Code was sent to your email</h2>
+          <div class = "InputForms" id = "verifyEmailForm">
+            <form method = "post">
+              <input type = "text" class = "UserInput" id = "fCode" name = "fCode" placeholder = "Enter verification code" autocomplete = "off" onfocus = "clearErrorMsg(document.getElementById('codeErrMess'))" required>
+              <h3 class = "UserHelp" id = "donthasCode"><span id = "donthascodebutton">I didn't receive the code</span></h3>
+              <h3 class = "ErrorMessages" id = "codeErrMess">ERROR</h3>
+              <button type = "button" class = "LoginButtons" id = "verifyCodeButton" value = "Verify" onclick = "checkCode()">Verify</button>
+            </form>
+          </div>
+        </div>
+        <img src = "../static/img/wallp.jpg" alt = "Wall" class = "MainWallImg">
+      </div>
+    </main>
+    <footer>
+      <h5 id = "footerText">{% print(headers[2]['title']) %}</h5>
+    </footer>
+    <script src = "../static/js/ajx1.js"></script>
+    <script src = "../static/js/const.js"></script>
+    <script src = "../static/js/forgotpass.js"></script>
+  </body>
+</html>

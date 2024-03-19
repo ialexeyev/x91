@@ -59,6 +59,20 @@ async = ["asgiref (>=3.2)"]
 dotenv = ["python-dotenv"]
 
 [[package]]
+name = "flask-mail"
+version = "0.9.1"
+description = "Flask extension for sending email"
+optional = false
+python-versions = "*"
+files = [
+    {file = "Flask-Mail-0.9.1.tar.gz", hash = "sha256:22e5eb9a940bf407bcf30410ecc3708f3c56cc44b29c34e1726fe85006935f41"},
+]
+
+[package.dependencies]
+blinker = "*"
+Flask = "*"
+
+[[package]]
 name = "greenlet"
 version = "3.0.3"
 description = "Lightweight in-process concurrent programming"
@@ -344,4 +358,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "067b0e7b503481cfc08a60fddedeac4e6d11e1ec6cbbff3298309a1ef9be885e"
+content-hash = "a36c96fc9a46524a1f49f9f02952e9073f14572a1e153c7e57571e97c7fcb2a3"
