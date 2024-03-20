@@ -26,7 +26,7 @@
           <div class = "InputForms" id = "passForm">
             <form method = "post">
                 <input type = "email" class = "UserInput" id = "fMail" name = "fMail" placeholder = "Enter your e-mail" autocomplete = "off" onfocus = "clearErrorMsg(document.getElementById('mailErrMess'))" required>
-                <h3 class = "UserHelp" id = "donthasMail"><span id = "forgotPassButton">I don't have work e-mail!</span></h3>
+                <h3 class = "UserHelp" id = "donthasMail"><span id = "forgotPassButton" onclick = "dontHasMail(document.getElementById('forgotPassBlock'), document.getElementById('returnHomeBlock'))">I don't have work e-mail!</span></h3>
                 <h3 class = "ErrorMessages" id = "mailErrMess">ERROR</h3>
                 <button type = "button" class = "LoginButtons" id = "mailButton" value = "Get code" onclick = "checkMail()">Get code</button>
             </form>
@@ -37,11 +37,27 @@
           <div class = "InputForms" id = "verifyEmailForm">
             <form method = "post">
               <input type = "text" class = "UserInput" id = "fCode" name = "fCode" placeholder = "Enter verification code" autocomplete = "off" onfocus = "clearErrorMsg(document.getElementById('codeErrMess'))" required>
-              <h3 class = "UserHelp" id = "donthasCode"><span id = "donthascodebutton">I didn't receive the code</span></h3>
+              <h3 class = "UserHelp" id = "donthasCode"><span id = "donthascodebutton" onclick = "dontHasMail(document.getElementById('verifyEmailBlock'), document.getElementById('returnHomeBlock'))">I didn't receive the code</span></h3>
               <h3 class = "ErrorMessages" id = "codeErrMess">ERROR</h3>
               <button type = "button" class = "LoginButtons" id = "verifyCodeButton" value = "Verify" onclick = "checkCode()">Verify</button>
             </form>
           </div>
+        </div>
+        <div class = "SignInForms" id = "newPassBlock">
+            <h2 class = "SignInHeaders" id = "newPasslHeader">Enter new password</h2>
+            <div class = "InputForms" id = "newPassForm">
+              <form method = "post">
+                <input type = "text" class = "UserInput" id = "npUserId" name = "npUserId" placeholder = "ID" autocomplete = "off" onfocus = "clearErrorMsgNP(document.getElementById('newPassErrMess'), this)" required>
+                <input type = "password" class = "UserInput" id = "npNewPass" name = "npNewPass" placeholder = "New password" autocomplete = "off" onfocus = "clearErrorMsgNP(document.getElementById('newPassErrMess'), this)" required>
+                <input type = "password" class = "UserInput" id = "confirmPass" name = "confirmPass" placeholder = "Confirm password" autocomplete = "off" onfocus = "clearErrorMsgNP(document.getElementById('newPassErrMess'), this)" required>
+                <h3 class = "ErrorMessages" id = "newPassErrMess">ERROR</h3>
+                <button type = "button" class = "LoginButtons" id = "newPassButton" value = "Confirm" onclick = "checkNewPass()">Confirm</button>
+              </form>
+            </div>
+        </div>
+        <div class = "SignInForms" id = "returnHomeBlock">
+          <h2 class = "SignInHeaders" id = "returnHomeHeader"></h2>
+          <button type = "button" class = "LoginButtons" id = "returnHomeButton" value = "Return" onclick = "returnHome()">Return</button>
         </div>
         <img src = "../static/img/wallp.jpg" alt = "Wall" class = "MainWallImg">
       </div>

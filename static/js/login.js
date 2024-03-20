@@ -59,6 +59,7 @@ function checkIdDB(username, errMsg, logBlock, passBlock, passErr, passInput) {
         //Display password form
         logBlock.style.transform = "rotateY(90deg)";
         setTimeout(() => {
+          showUsername(document.getElementById('fName').value);
           passBlock.style.transform = "rotateY(0deg)";
           errMsg.style.visibility = "hidden";
           passErr.style.visibility = "hidden";
@@ -81,6 +82,7 @@ function returnToIdForm(blockId, blockPass) {
   blockPass.style.transform = "rotateY(90deg)";
   setTimeout(() => {
     blockId.style.transform = "rotateY(0deg)";
+    clearUsername();
   }, "1500");
 }
 
@@ -161,4 +163,12 @@ function clearErrorMsg(errMsg) {
   errMsg.style.visibility = "hidden";
 }
 
+//3 Show & clear username on password block
+function showUsername(username) {
+  document.getElementById('passHelp').textContent += username;
+}
+
+function clearUsername() {
+  document.getElementById('passHelp').innerHTML = "&#8592 ";
+}
 

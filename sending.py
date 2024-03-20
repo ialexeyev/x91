@@ -10,7 +10,6 @@ def sendCode(email, code):
 
   server = smtplib.SMTP('smtp.gmail.com', 587)
   server.starttls()
-  print(message)
 
   server.login(sender, 'gcyp vzvl uhlc dpvk')
 

@@ -22,7 +22,7 @@ def loadHeaders():
 # LOGIN PAGE: FOR CHECKING USER ID
 def loadUsers():
   with engine.connect() as conn:
-    pre_users = conn.execute(text("select username from users"))
+    pre_users = conn.execute(text("select username, verified from users"))
     users = []
     for row in pre_users.all():
       users.append(row._asdict())
@@ -74,8 +74,21 @@ def addingNewUser(fname, lname, id, passw, mail, job):
 # FORGOT PASSOWRD PAGE: EMAIL VERIFICATION
 def askEmail():
   with engine.connect() as conn:
-    preEmail = conn.execute(text("select email, verified from users"))
+    preEmail = conn.execute(
+        text("select username, email, verified from users"))
     email = []
     for row in preEmail.all():
       email.append(row._asdict())
     return email
+
+
+# CHANGING PASSWORD
+def changPass(user, passw):
+  with engine.connect() as conn:
+    updatePass = conn.execute(
+        text("update users set passw = :passw where username = :user"), {
+            "passw": passw,
+            "user": user
+        })
+    conn.commit()
+    return True

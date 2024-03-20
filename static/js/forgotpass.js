@@ -70,8 +70,8 @@ function checkMailDb(email, error, block, newblock) {
         error.textContent = ERR_MSG_TXT_WRONG_MAIL;
       }
       else {
-        errMsg.style.color = "red";
-        errMsg.textContent = ERR_MSG_TXT_SERV_CONN;
+        error.style.color = "red";
+        error.textContent = ERR_MSG_TXT_SERV_CONN;
     }
   });
 }
@@ -83,7 +83,7 @@ function checkCode() {
   let errMessage = document.getElementById('codeErrMess');
   let loginBlock = document.getElementById('verifyEmailBlock');
   if(checkCodeInput(userCode, errMessage)) {
-    
+    verifyCodeInput(userCode, errMessage, loginBlock);
   }
 }
 
@@ -107,21 +107,168 @@ function checkCodeInput(code, error) {
   }
 }
 
-//4. Clear error message field
+//3.2 Verify code with DB
+function verifyCodeInput(code, error, block) {
+  $.ajax({
+    data : {vcode : code},
+    type : 'POST',
+    url : '/verifycodeprocess'
+    })
+    .done(function(data) {
+      if(data == 'OK') {
+        error.style.color = "green";
+        error.textContent = SUCCESS_MSG_MAIN;
+        //Display verification code form
+        block.style.transform = "rotateX(90deg)";
+        setTimeout(() => {
+          document.getElementById("newPassBlock").style.transform = "rotateX(0deg)";
+        }, "1500");
+      }
+      else if(data == 'NOK'){
+        error.style.color = "red";
+        error.textContent = ERR_MSG_TXT_CODE_INCORRECT;
+      }
+      else {
+        error.style.color = "red";
+        error.textContent = ERR_MSG_TXT_SERV_CONN;
+    }
+  });
+}
+
+//4. Checking new user password
+function checkNewPass() {
+  let userInput = [
+    document.getElementById('npUserId'),
+    document.getElementById('npNewPass'),
+    document.getElementById('confirmPass')
+  ];
+  let errMessage = document.getElementById('newPassErrMess');
+  let loginBlock = document.getElementById('newPassBlock');
+  let returnHomeBlock = document.getElementById('returnHomeBlock');
+  if(checkNewPassInput(userInput, errMessage)) {
+    changepass(userInput, errMessage, loginBlock, returnHomeBlock);
+  }
+}
+
+//4.1 Checking new password input
+function checkNewPassInput(input, error) {
+  for(let i = 0; i < input.length; i++) {
+    //For empty fields:
+    if(input[i].value == "") {
+      if(input[i].id == "npUserId") {
+        showErrorMsg(error, ERR_MSG_TXT_ID_EMPTY);
+        input[i].style.background = "#fbcbcb";
+        return false;
+      }
+      else if((input[i].id = "npNewPass") || (input[i].id == "confirmPass")) {
+        showErrorMsg(error, ERR_MSG_TXT_PASS_EMPTY);
+        input[i].style.background = "#fbcbcb";
+        return false;
+      }
+    }
+    //For checking length:
+    if(input[i].value.length > 20) {
+      //for password 
+      if((i == 1) || (i == 2)) {
+        showErrorMsg(error, ERR_MSG_PASS_LENGTH);
+        input[i].style.background = "#fbcbcb";
+        return false;
+      }
+      if(input[i].value.length > 30) {
+        showErrorMsg(error, ERR_MSG_TEXT_LENGTH_ALL);
+        input[i].style.background = "#fbcbcb";
+        return false;
+      }
+    }
+    //For checking characters:
+    if(((/^[A-Za-z0-9.]+$/).test(input[i].value)) == false) {
+      // skip password check
+      if((i == 1) || (i == 2)) {
+        continue;
+      }
+      //for id
+      showErrorMsg(error, ERR_MSG_TXT_CHARS);
+      input[i].style.background = "#fbcbcb";
+      return false;
+    }
+    //For password matches:
+    if(input[1].value != input[2].value) {
+      showErrorMsg(error, ERR_MSG_TXT_MATCH_PASS);
+      input[2].style.background = "#fbcbcb";
+      return false; 
+    }
+  }
+  synchro(error);
+  return true;
+}
+
+//4.2 Changing password: synchronization with db
+function changepass(input, error, block, returnBlock) {
+  $.ajax({
+    data : {username : input[0].value, changingpass: input[1].value},
+    type : 'POST',
+    url : '/changingpasswprocess'
+    })
+    .done(function(data) {
+      if(data == 'OK') {
+        error.style.color = "green";
+        error.textContent = SUCCESS_MSG_MAIN;
+        //Display verification code form
+        block.style.transform = "rotateY(90deg)";
+        setTimeout(() => {
+          document.getElementById('returnHomeHeader').textContent = 'Your password has been changed!';
+          returnBlock.style.transform = "rotateY(0deg)";
+        }, "1500");
+      }
+      else if(data == 'NOK'){
+        error.style.color = "red";
+        error.textContent = ERR_MSG_TXT_CHANGING_PASS;
+      }
+      else if(data = 'IDERROR') {
+        error.style.color = "red";
+        error.textContent = ERR_MGS_TXT_IDERROR;
+      }
+      else {
+        error.style.color = "red";
+        error.textContent = ERR_MSG_TXT_SERV_CONN;
+    }
+  });
+}
+
+//5. Clear error message field
 function clearErrorMsg(errMsg) {
   errMsg.style.visibility = "hidden";
 }
+function clearErrorMsgNP(errMsg, input) {
+  errMsg.style.visibility = "hidden";
+  input.style.background = "white"; 
+} 
 
-//5. Show error message field
+//6. Show error message field
 function showErrorMsg(errMsg, text) {
   errMsg.style.color = "red";
   errMsg.textContent = text;
   errMsg.style.visibility = "visible";
 }
 
-//6. Synchronization function
+//7. Synchronization function
 function synchro(err) {
   err.style.color = "orange";
   err.textContent = SYNCHRO_MAIN;
   err.style.visibility = "visible";
 }
+
+//8 Return home function
+function returnHome() {
+  window.location.href = '/';
+}
+
+//9 If user doesnt have email
+function dontHasMail(currentBlock, retBlock) {
+  currentBlock.style.transform = "rotateY(90deg)";
+   document.getElementById('returnHomeHeader').textContent = 'Ask to administrator for changing password!';
+  setTimeout(() => {
+    retBlock.style.transform = "rotateY(0deg)";
+  }, "1500");
+}
+

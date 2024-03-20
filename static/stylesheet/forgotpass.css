@@ -14,6 +14,11 @@
   transition: 1.5s;
 }
 
+#returnHomeBlock {
+  transform: rotateY(90deg);
+  transition: 1.5s;
+}
+
 /* Dimensions styles */
 /* DESKTOPS (1824px) */
 @media screen and (max-width: 1824px) {
@@ -49,6 +54,26 @@
   .ErrorMessages {
     font-size: 1.2vw;
   }
+  #confirmPass, #npNewPass,
+  #npUserId {
+    margin-bottom: 1.5vh;
+  }
+  #newPassBlock {
+    height: 46vh;
+    margin: 22vh 28vw;
+  }
+
+  #returnHomeHeader {
+    margin-top: 7%;
+  }
+  #returnHomeBlock {
+    height: 27vh;
+    margin-top: 27.5vh;
+  }
+  #returnHomeButton {
+    margin-top: 3.2vh;
+  }
+  
 }
 
 
@@ -85,6 +110,25 @@
   .ErrorMessages {
     font-size: 1.4vw;
   }
+  #confirmPass, #npNewPass,
+  #npUserId {
+    margin-bottom: 2.2vh;
+  }
+  #newPassBlock {
+    height: 49vh;
+    margin: 21.5vh 21.5vw;
+  }
+  
+  #returnHomeHeader {
+    margin-top: 9%;
+  }
+  #returnHomeBlock {
+    height: 33vh;
+    margin-top: 25vh;
+  }
+  #returnHomeButton {
+    margin-top: 3.7vh;
+  }
 }
 
 /* NET LAPTOPS (1024px) */
@@ -119,6 +163,25 @@
   }
   .ErrorMessages {
     font-size: 1.7vw;
+  }
+  #confirmPass, #npNewPass,
+  #npUserId {
+    margin-bottom: 2vh;
+  }
+  #newPassBlock {
+    height: 54vh;
+    margin: 21vh 19vw;
+  }
+
+  #returnHomeHeader {
+    margin-top: 10%;
+  }
+  #returnHomeBlock {
+    height: 33vh;
+    margin-top: 25vh;
+  }
+  #returnHomeButton {
+    margin-top: 3.6vh;
   }
 }
 
@@ -155,6 +218,25 @@
   .ErrorMessages {
     font-size: 2.5vw;
   }
+  #confirmPass, #npNewPass,
+  #npUserId {
+    margin-bottom: 3vh;
+  }
+  #newPassBlock {
+    height: 56vh;
+    margin: 22vh 12vw;
+  }
+
+  #returnHomeHeader {
+    margin-top: 12%;
+  }
+  #returnHomeBlock {
+    height: 34vh;
+    margin-top: 24.5vh;
+  }
+  #returnHomeButton {
+    margin-top: 4.7vh;
+  }
 }
 
 /* SMARTPHONES (480px) */
@@ -190,14 +272,33 @@
   .ErrorMessages {
     font-size: 3.7vw;
   }
+  #confirmPass, #npNewPass,
+  #npUserId {
+    margin-bottom: 2.3vh;
+  }
+  #newPassBlock {
+    height: 60vh;
+    margin: 15vh 0vw;
+  }
+
+  #returnHomeHeader {
+    margin-top: 10%;
+  }
+  #returnHomeBlock {
+    height: 33vh;
+    margin-top: 25vh;
+  }
+  #returnHomeButton {
+    margin-top: 3.7vh;
+  }
 }
 
 /* MOBILE (360px) */
 @media screen and (max-width: 360px) {
   .SignInForms {
     width: 93%;
-    height: 52vh;
-    margin: 19vh 0vw;
+    height: 48vh;
+    margin: 21vh 0vw;
     padding: 0vh 3.5vw 0vh 3.5vw;
   }
   .SignInHeaders {
@@ -224,5 +325,24 @@
   }
   .ErrorMessages {
     font-size: 4.1vw;
+  }
+  #confirmPass, #npNewPass,
+  #npUserId {
+    margin-bottom: 2.5vh;
+  }
+  #newPassBlock {
+    height: 61vh;
+    margin: 12.5vh 0vw;
+  }
+
+  #returnHomeHeader {
+    margin-top: 10%;
+  }
+  #returnHomeBlock {
+    height: 35vh;
+    margin-top: 24vh;
+  }
+  #returnHomeButton {
+    margin-top: 4.2vh;
   }
 }

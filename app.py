@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request
-from sqlalchemy import False_, false
 from db import loadHeaders
 
 app = Flask(__name__, '/static')
@@ -17,11 +16,12 @@ def launch():
 def processId():
   # DB CONNECTION
   from db import loadUsers
+  global userId
   userId = request.form['userId']
   users = loadUsers()
   indicator = False
   for user in users:
-    if user['username'] == userId:
+    if ((user['username'] == userId) and (user['verified'] == 1)):
       indicator = True
   if (indicator == True):
     return 'OK'
@@ -76,6 +76,10 @@ def newUser():
 # 3 USER FORGOT PASSWORD PAGE
 @app.route("/forgotpass")
 def forgotPass():
+  try:
+    userId
+  except NameError:
+    return 'PAGE NOT FOUND: ERROR 404'
   headers = loadHeaders()
   return render_template('forgotpassw.html', headers=headers)
 
@@ -86,19 +90,49 @@ def verifyEmail():
   from db import askEmail
   from sending import sendCode
   from generating import generateCode
+  global gcode
   gcode = generateCode()
   mail = request.form['userMail']
   emails = askEmail()
   indicator = 0
+  sending = False
   for email in emails:
-    if ((email['email'] == mail) and (email['verified'] == 1)):
+    if ((email['email'] == mail) and (email['verified'] == 1)
+        and (email['username'] == userId)):
       indicator += 1
-  if (sendCode(mail, gcode) == True):
+      sending = sendCode(mail, gcode)
+  if (sending == True):
     indicator += 1
   if (indicator == 2):
     return 'OK'
   else:
     return 'NOK'
+
+
+# 3.2 USER CODE VERIFICATION
+@app.route("/verifycodeprocess", methods=['POST'])
+def verifyCode():
+  usercode = request.form['vcode']
+  if (usercode == str(gcode)):
+    return 'OK'
+  else:
+    return 'NOK'
+
+
+# 3.3 CHANGIN PASSWORD PROCESS
+@app.route("/changingpasswprocess", methods=['POST'])
+def changingPassw():
+  from db import changPass
+  chuser = request.form['username']
+  chpassw = request.form['changingpass']
+  if (chuser != userId):
+    return 'IDERROR'
+  else:
+    process = changPass(chuser, chpassw)
+    if (process == True):
+      return 'OK'
+    else:
+      return 'NOK'
 
 
 # RUNNING APPLICATION
